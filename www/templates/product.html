@@ -1,11 +1,16 @@
 <ion-view view-title="Product">
-  <ion-content>
+  <ion-content padding="true">
     <ion-list>
       <ion-item  ng-repeat="p in viewproduct" ng-if="p.ItemName != null">
+         <div class="spacer" style="height: 40px;"></div>
         <p>Name: {{p.ItemName}} </p>
+         <div class="spacer" style="height: 40px;"></div>
         <p>Price: ${{p.Price}}</p>
+         <div class="spacer" style="height: 40px;"></div>
         <p>Catagory: {{p.Catagory}}</p>
+         <div class="spacer" style="height: 40px;"></div>
         <p>Description: {{p.Description}}</p>
+         <div class="spacer" style="height: 40px;"></div>
          <button id="signup-button4" class="button button-positive button-block" >Add to Cart</button>
    
       </ion-item>

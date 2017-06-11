@@ -1,10 +1,17 @@
 <ion-view view-title="Home">
-  <ion-content>
+  <ion-content padding="true" >
+    <div class="spacer" style="height: 40px;"></div>
+    
+    <div >
+        <img src="img/cart.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+      <div class="spacer" style="height: 40px;"></div>
     <ion-list>
       <ion-item ng-repeat="p in product" ng-if="p.ItemName != null" href="#/app/product/{{p._id}}">
         <p>Name: {{p.ItemName}} </p>
         <p>Price: ${{p.Price}}</p>
       </ion-item>
+      
     </ion-list>
   </ion-content>
 </ion-view>

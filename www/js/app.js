@@ -71,6 +71,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   controller: 'SignUpCtrl'
     }
   )
+   .state('app.map', {
+      url: '/map',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/map.html',
+         controller: 'MapCtrl'
+        }
+      }
+    })
   .state('app.product', {
     url: '/product/:productId',
     views: {
