@@ -32,42 +32,54 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.sell', {
+    url: '/sell',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/sell.html',
+        controller: 'AddItemCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.cart', {
+      url: '/cart',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/cart.html'
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.home', {
+      url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/home.html',
+          controller: 'viewProducttCtrl'
         }
       }
     })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+.state('login', {
+    url: '/login',
+   templateUrl: 'templates/login.html',
+  controller: 'LoginCtrl'
+    }
+  )
+  .state('signUp', {
+    url: '/signUp',
+   templateUrl: 'templates/signUp.html',
+  controller: 'SignUpCtrl'
+    }
+  )
+  .state('app.product', {
+    url: '/product/:productId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/product.html',
+        controller: 'ViewProductCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/login');
 });

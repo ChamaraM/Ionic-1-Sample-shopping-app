@@ -1,0 +1,29 @@
+<ion-view view-title="Sell An Item">
+    <ion-content  padding="true" class="has-header" ng-controller='AddItemCtrl'>
+    <form id="signup-form2" class="list" ng-submit="AddItem()">
+      <ion-list id="sell-list3">
+        <label class="item item-input" id="sell-input3">
+          <span class="input-label">Item Name</span>
+          <input type="text" ng-model="ItemData.name" placeholder="">
+        </label>
+        <label class="item item-input" id="sell-input4">
+          <span class="input-label">Price</span>
+          <input type="text" ng-model="ItemData.price" placeholder="">
+        </label>
+      </ion-list>
+      <label class="item item-input" id="sell-input5">
+        <span class="input-label">Description</span>
+        <input type="text" ng-model="ItemData.Desc" placeholder="">
+      </label>
+      <label class="item item-select" id="addStudent-select3">
+        <span class="input-label">Catagory</span>
+        <select ng-model="ItemData.cat">
+          <option>Car</option>
+          <option>Lands</option>
+          <option>Pets</option>
+        </select>
+      </label>
+      <button id="signup-button4" class="button button-positive button-block" type="submit">Sell</button>
+    </form>
+  </ion-content>
+</ion-view>

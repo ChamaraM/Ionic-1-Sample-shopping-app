@@ -51,6 +51,150 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
+.controller('SignUpCtrl', function($scope, $http, $state, $rootScope){
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+  $scope.loginData = {};
+
+  $scope.doLogin = function(){
+    var userName = $scope.loginData.name;
+    var password = $scope.loginData.password;
+    var email = $scope.loginData.email;
+
+   $http.post('http://localhost:3500/users', {
+
+  Email : email,
+	Password : password,
+	Name : userName,
+
+
+    }).then(successCallBack, errorCallBack);
+
+    function successCallBack(resoponse){      
+      console.log("Login Success");
+      $rootScope.loggedInData = resoponse.data;
+      console.log(resoponse.data);
+      $state.go('login');
+
+    }
+
+    function errorCallBack(data){
+      console.log("falier callback");
+    }
+
+  
+  }
+})
+.controller('AddItemCtrl', function($scope, $http, $state, $rootScope){
+
+  $scope.ItemData = {};
+
+  $scope.AddItem = function(){
+    var Name = $scope.ItemData.name;
+    var price = $scope.ItemData.price;
+    var dec = $scope.ItemData.Desc;
+    var cat = $scope.ItemData.cat;
+
+   $http.post('http://localhost:3500/product', {
+
+  ItemName : Name,
+	Price : price,
+	Description : dec,
+	Catagory : cat,
+
+
+    }).then(successCallBack, errorCallBack);
+
+    function successCallBack(resoponse){      
+      console.log("Login Success");
+      $rootScope.loggedInData = resoponse.data;
+      console.log(resoponse.data);
+    // $state.go('app.home');
+    $state.go($state.current);
+
+    }
+
+    function errorCallBack(data){
+      console.log("falier callback");
+    }
+
+    
+  }
+})
+.controller('LoginCtrl', function($scope, $http, $state, $rootScope){
+
+  $scope.userData = {};
+
+  $scope.doSignIn = function(){
+    var loguserName = $scope.userData.UserName;
+    var logpassword = $scope.userData.Password;
+ 
+
+   $http.put('http://localhost:3500/login/', {
+
+   "id" : loguserName,
+"userPassword": logpassword
+    }).then(successCallBack, errorCallBack);
+
+    function successCallBack(resoponse){      
+      console.log("Login Success");
+      $rootScope.loggedInData = resoponse.data;
+      console.log(resoponse.data);
+      $state.go('app.home');
+
+    }
+
+    function errorCallBack(data){
+      console.log("falier callback");
+    }
+
+/*console.log("Login Success");
+      $rootScope.loggedInData =data;
+      $state.go('home');*/
+    console.log('UserName: ' + loguserName + ' PAssword: ' + logpassword );
+  }
+})
+.controller('viewProducttCtrl', function($scope, $http, $state, $rootScope){
+
+  $scope.product = {};
+
+
+   
+
+   $http.get('http://localhost:3500/product/').then(successCallBack, errorCallBack);
+
+    function successCallBack(resoponse){      
+     
+    console.log("adasdas");
+$scope.product = resoponse.data;
+    }
+
+    function errorCallBack(data){
+      console.log(data);
+      console.log("falier callback");
+    }
+
+
+  
+})
+.controller('ViewProductCtrl', function($scope, $stateParams, $http, $state, $rootScope) {
+  console.log($stateParams.productId)
+  var p_id = $stateParams.productId;
+   $scope.viewproduct = {};
+
+
+   
+
+   $http.get('http://localhost:3500/getproduct/'+p_id).then(successCallBack, errorCallBack);
+
+    function successCallBack(resoponse){      
+     
+    console.log("ViewProduct");
+$scope.viewproduct = resoponse.data;
+    }
+
+    function errorCallBack(data){
+      console.log(data);
+      console.log("falier callback");
+    }
+
 });

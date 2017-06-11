@@ -1,0 +1,14 @@
+<ion-view view-title="Product">
+  <ion-content>
+    <ion-list>
+      <ion-item  ng-repeat="p in viewproduct" ng-if="p.ItemName != null">
+        <p>Name: {{p.ItemName}} </p>
+        <p>Price: ${{p.Price}}</p>
+        <p>Catagory: {{p.Catagory}}</p>
+        <p>Description: {{p.Description}}</p>
+         <button id="signup-button4" class="button button-positive button-block" >Add to Cart</button>
+   
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
